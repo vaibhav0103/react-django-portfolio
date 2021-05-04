@@ -2,9 +2,11 @@ import React, { useState, useEffect } from 'react';
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
+import Divider from '@material-ui/core/Divider';
 import CircularProgress from '@material-ui/core/CircularProgress'
 import apiInstance from '../api.js';
 import { useStyles } from './About/styles';
+import {Link} from 'react-router-dom';
 
 const Sidebar = () => {
 
@@ -20,6 +22,7 @@ const Sidebar = () => {
         }
     )
     const [isLoading, setIsLoading] = useState(false);
+    const [isError, setIsError] = useState({show: false, msg:""});
 
     // Calculate Time Left
     const calculateTimeLeft = () => {
@@ -45,8 +48,12 @@ const Sidebar = () => {
         setIsLoading(true)
         console.log("Called")
         const url= 'teams/81/matches?status=SCHEDULED';
-        const res = await apiInstance.get(url);
-        
+        const res = await apiInstance.get(url)
+            .then(response =>{
+                return response
+            }).catch((error)=>{
+                setIsError({show: true, msg: error})
+            });
         const matchDate= new Date(res.data.matches[0].utcDate).toString();
         // Save Date to Local Storage to avoid Render
         localStorage.setItem('match_date', JSON.stringify(matchDate))
@@ -94,28 +101,49 @@ const Sidebar = () => {
         );
     });
 
+    if(isError.show){
+        return (
+            <div className="sidebar-error">
+                {isError.msg}
+            </div>
+        )
+    }
     if(isLoading){
         return (
             <div className="sidebar-loading">
-                <CircularProgress />
+                Loading...<CircularProgress />
             </div>
         )
     }
 
     return (
-        <Grid container item md={4} xs={12} alignItems="flex-start" justify="center">
-            <Paper elevation={1} className={classes.sidebarAboutBox}>
-                <Typography className={classes.title} variant="h5" gutterBottom>
-                   Next FC Barcelona Match
-                </Typography>
-                <Typography className={classes.match}>{matchData.homeTeam} Vs {matchData.awayTeam}</Typography>
-                <Typography className={classes.match}>{matchData.date}</Typography>
-                <Typography component="div" variant="button" className={classes.time}>
-                    {timerComponents.length ? timerComponents : <span>Time's up!</span>}
-                    {/* {timeLeft} */}
-                </Typography>
-            </Paper>
-        </Grid>
+        <>
+            <Grid item>
+                <Paper elevation={1} className={classes.sidebarAboutBox}>
+                    <Typography className={classes.title} variant="h5" gutterBottom>
+                    Next FC Barcelona Match
+                    </Typography>
+                    <Typography className={classes.match}>{matchData.homeTeam} Vs {matchData.awayTeam}</Typography>
+                    <Typography className={classes.match}>{matchData.date}</Typography>
+                    <Typography component="div" variant="button" className={classes.time}>
+                        {timerComponents.length ? timerComponents : <span>Time's up!</span>}
+                        {/* {timeLeft} */}
+                    </Typography>
+                </Paper>
+            </Grid>
+            <Grid item >
+                <Paper elevation={1} className={classes.sidebarTv}>
+                    <Typography component="div" variant="button" className={classes.sidebarBtn}>                    
+                        <Link to="/tv" className={classes.sidebarTvlink}>TV Shows/Web Series Suggestions</Link>
+                    </Typography>
+                    <Divider /> 
+                    <Typography component="div" variant="button" className={classes.sidebarBtn}>                    
+                        <Link to="/movies" className={classes.sidebarTvlink}>Movies Suggestions</Link>
+                    </Typography>
+                </Paper>
+            </Grid>
+            
+        </>  
     )
 }
 

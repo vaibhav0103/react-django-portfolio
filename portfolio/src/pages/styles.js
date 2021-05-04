@@ -41,3 +41,16 @@ export const useAboutStyles = makeStyles((theme)=> ({
         justifyContent: 'center'
     }
 }));
+
+export const useMovieStyles = makeStyles((theme) => ({
+    image: {
+        height: "300px",
+        width: "auto",
+    },
+    upper: {
+        textTransform: "uppercase",
+    },
+    capital: {
+        textTransform: "capitalize"
+    },
+}));

@@ -2,34 +2,11 @@ import React from 'react';
 import { CircularProgress, Container, Grid, Paper, Typography } from '@material-ui/core';
 import useFetch from './useFetch';
 import TvIcon from '@material-ui/icons/Tv';
-import { makeStyles } from '@material-ui/core/styles';
-
-const useStyles = makeStyles((theme) => ({
-    image: {
-        height: "300px",
-        width: "auto",
-    },
-    upper: {
-        textTransform: "uppercase",
-    },
-    capital: {
-        textTransform: "capitalize"
-    },
-}));
+import { useMovieStyles } from './styles.js';
 
 const Tv = () => {
-    const classes = useStyles();
-    const {isError, isLoading, shows} = useFetch()
-
-    // Check Loading
-
-    if(isLoading){
-        return (
-            <div className="loading">
-                <CircularProgress />
-            </div>
-        )
-    }
+    const classes = useMovieStyles();
+    const {isError, isLoading, list} = useFetch("tv")
 
     // Check Error
     if(isError.show){
@@ -40,12 +17,21 @@ const Tv = () => {
         )
     }
 
+    // Check Loading
+    if(isLoading){
+        return (
+            <div className="loading">
+                <CircularProgress />
+            </div>
+        )
+    }
+
     return (
 
         <Container>
             <Typography variant="h2" align="center" gutterBottom>TV Shows <TvIcon fontSize="large"/> </Typography>
 
-            {shows.map(show =>{ 
+            {list.map(show =>{ 
                 return (
                     
                     <Grid container key={show.imdbID} direction="row" justify="center" alignItems="stretch" spacing={2}>

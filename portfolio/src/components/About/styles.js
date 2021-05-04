@@ -29,7 +29,30 @@ export const useStyles = makeStyles((theme) => ({
     time: {
         color:"#ffffff",
         border: "1px solid #edbb00",
+    },
+    sidebarTv: {
+        padding: theme.spacing(6),
+        backgroundColor: theme.palette.secondary.light,
+    },
+    sidebarTvlink: {
+        textDecoration: 'none',
+        color: theme.palette.secondary.main,
+    },
+    sidebarBtn: {
+        textDecoration: 'none',
+        marginBottom: "10px",
+        textAlign: "center",
+        fontSize: "20px",
+        border: `1px solid ${theme.palette.primary.main}`,
+        borderRadius: "20px",
+        padding: theme.spacing(1),
+        backgroundColor: theme.palette.secondary.dark,
+        '&:hover': {
+            color: theme.palette.primary.dark,
+            backgroundColor: theme.palette.primary.light,
+        }
     }
+
 }));
 
 export const useDetailStyles = makeStyles((theme)=> ({

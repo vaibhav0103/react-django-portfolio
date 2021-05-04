@@ -11,8 +11,7 @@ import { useContentStyles } from './styles';
 const Content = () => {
     const classes = useContentStyles();
     return (
-        
-        <Grid container item md={8} xs={12} spacing={2} direction="column" justify="center" alignItems="center" >
+        <>
             <Grid item >
                 <Paper variant="outlined" className={classes.content}>
                     <Typography variant="h4" gutterBottom align="center">
@@ -53,7 +52,7 @@ const Content = () => {
                     </Typography>
                 </Paper> 
             </Grid>
-        </Grid>
+        </>
         
     )
 }

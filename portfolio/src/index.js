@@ -5,7 +5,7 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
 import {Header, Footer} from './components';
-import {About, Contact, More, Tv} from './pages';
+import {About, Contact, More, Tv, Movies} from './pages';
 import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
 
 const theme = createMuiTheme({
@@ -17,9 +17,9 @@ const theme = createMuiTheme({
       dark: '#cd4315', //tia maria -- home->name 
      },
     secondary: {
-      light: '#ff7961',
-      main: '#f44336',
-      dark: '#ba000d',
+      light: '#DAE9F1', //Black Squeeze HEX: #DAE9F1
+      main: '#D1D100',  //Corn HEX: #D1D100 sidebar
+      dark: '#2D344D', //Martinique HEX: #2D344D sidebar
       contrastText: '#000',
     },
   },
@@ -37,6 +37,7 @@ ReactDOM.render(
         <Route path="/contact"><Contact /></Route>
         <Route path="/more"><More /></Route>
         <Route path="/tv"><Tv /></Route>
+        <Route path="/movies"><Movies /></Route>
         {/* <Route path="/music"><Music /></Route> */}
       </Switch>
       <Footer />
