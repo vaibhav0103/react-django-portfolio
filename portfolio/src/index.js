@@ -9,6 +9,15 @@ import {About, Contact, More, Tv, Movies} from './pages';
 import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
 
 const theme = createMuiTheme({
+  overrides: {
+    MuiAvatar: {
+      root: {
+        width: "128px",
+        height: "128px",
+        margin: "8px",
+      },
+    }
+  },
   palette: {
     primary: { 
       light:'#fff', // footer->subtitle
