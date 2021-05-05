@@ -23,15 +23,22 @@ export const useStyles = makeStyles((theme) => ({
     },
     particlesJs: {
         position: "absolute",
-    }
+    },
+    root: {
+        '&&': {
+            width: "128px",
+            height: "128px",
+            margin: "8px",
+        }
+    },
 
 }));
 
-export const useAboutStyles = makeStyles((theme)=> ({
+export const useAboutStyles = makeStyles((theme) => ({
     heading: {
         color: theme.palette.primary.dark,
     },
-    about:{
+    about: {
         // color: '#FF4838',
         justifyContent: 'center'
     }
@@ -48,4 +55,38 @@ export const useMovieStyles = makeStyles((theme) => ({
     capital: {
         textTransform: "capitalize"
     },
+}));
+
+export const useContactStyles = makeStyles((theme) => ({
+    paper: {
+        marginTop: theme.spacing(8),
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+    },
+    heading: {
+        color: theme.palette.primary.dark,
+    },
+    avatar: {
+        "&&": {
+            margin: theme.spacing(1),
+            backgroundColor: "#ff4838",
+            alignItems: 'center',
+        }
+    },
+    form: {
+        width: '100%', // Fix IE 11 issue.
+        marginTop: theme.spacing(1),
+    },
+    submit: {
+        margin: theme.spacing(3, 0, 2),
+    },
+
+    center: {
+        "&&": {
+            display: 'flex',
+            alignItems: 'center',
+            flexDirection: 'column'
+        }
+    }
 }));

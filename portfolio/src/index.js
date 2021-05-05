@@ -3,21 +3,22 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
-import {Header, Footer} from './components';
-import {About, Contact, More, Tv, Movies} from './pages';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import { Header, Footer } from './components';
+import { About, Contact, More, Tv, Movies } from './pages';
 import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
 
 const theme = createMuiTheme({
-  overrides: {
-    MuiAvatar: {
-      root: {
-        width: "128px",
-        height: "128px",
-        margin: "8px",
-      },
-    }
-  },
+  // Not Required
+  // overrides: {
+  //   MuiAvatar: {
+  //     root: {
+  //       width: "128px",
+  //       height: "128px",
+  //       margin: "8px",
+  //     },
+  //   }
+  // },
   palette: {
     primary: { 
       light:'#fff', // footer->subtitle

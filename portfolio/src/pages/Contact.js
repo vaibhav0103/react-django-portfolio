@@ -1,58 +1,10 @@
 import React from 'react';
 import { Avatar, Button, TextField, Container, CssBaseline, Typography } from "@material-ui/core";
 import { useFormControls } from "../components/Contact/ContactFormControls";
-import { makeStyles } from '@material-ui/core/styles';
+import inputFieldValues  from "../components/Contact/inputFields";
+import { useContactStyles } from './styles';
 import ContactMailIcon from '@material-ui/icons/ContactMail';
 import Alert from '@material-ui/lab/Alert';
-
-const useStyles = makeStyles((theme) => ({
-  paper: {
-    marginTop: theme.spacing(8),
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
-  },
-  heading: {
-    color: theme.palette.primary.dark,
-  },
-  avatar: {
-    margin: theme.spacing(1),
-    backgroundColor: "#ff4838",
-    alignItems: 'center',
-  },
-  form: {
-    width: '100%', // Fix IE 11 issue.
-    marginTop: theme.spacing(1),
-  },
-  submit: {
-    margin: theme.spacing(3, 0, 2),
-  },
-  center: {
-    display: 'flex',
-    alignItems: 'center',
-    flexDirection: 'column'
-    }
-}));
-
-const inputFieldValues = [
-  {
-    name: "fullname",
-    label: "Full Name",
-    id: "my-name"
-  },
-  {
-    name: "email",
-    label: "Email",
-    id: "my-email"
-  },
-  {
-    name: "message",
-    label: "Message",
-    id: "my-message",
-    multiline: true,
-    rows: 10
-  }
-];
 
 const Contact = () => {
     const {
@@ -63,7 +15,7 @@ const Contact = () => {
         showAlert,
         setShowAlert
     } = useFormControls();
-    const classes = useStyles();
+    const classes = useContactStyles();
 
     return (
     
@@ -73,7 +25,7 @@ const Contact = () => {
             {showAlert ? <Alert onClose={() => {setShowAlert(false)}}>Your Message Was Sent Successfully!</Alert> : ""}
             <form className={classes.form} autoComplete="off" onSubmit={handleFormSubmit}>
                 <Container className={classes.center}>
-                    <Avatar className={classes.avatar}>
+                    <Avatar className={ classes.avatar }>
                         <ContactMailIcon />
                     </Avatar>
                 </Container>
