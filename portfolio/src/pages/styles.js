@@ -1,6 +1,6 @@
 import { makeStyles } from '@material-ui/core/styles';
 
-export const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles((theme) => ({
     title: {
         color: theme.palette.primary.dark,
     },
@@ -34,7 +34,7 @@ export const useStyles = makeStyles((theme) => ({
 
 }));
 
-export const useAboutStyles = makeStyles((theme) => ({
+const useAboutStyles = makeStyles((theme) => ({
     heading: {
         color: theme.palette.primary.dark,
     },
@@ -44,7 +44,7 @@ export const useAboutStyles = makeStyles((theme) => ({
     }
 }));
 
-export const useMovieStyles = makeStyles((theme) => ({
+const useMovieStyles = makeStyles((theme) => ({
     image: {
         height: "300px",
         width: "auto",
@@ -57,7 +57,7 @@ export const useMovieStyles = makeStyles((theme) => ({
     },
 }));
 
-export const useContactStyles = makeStyles((theme) => ({
+const useContactStyles = makeStyles((theme) => ({
     paper: {
         marginTop: theme.spacing(8),
         display: 'flex',
@@ -90,3 +90,5 @@ export const useContactStyles = makeStyles((theme) => ({
         }
     }
 }));
+
+export { useStyles, useAboutStyles, useMovieStyles, useContactStyles  }

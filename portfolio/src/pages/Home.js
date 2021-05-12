@@ -1,54 +1,17 @@
 import React from 'react';
 import Typed from 'react-typed';
 import { Avatar, Grid, Typography } from '@material-ui/core';
+import avatar from '../images/myAvatar.png';
 import { useStyles } from './styles';
-import Particles from 'react-particles-js';
-import avatar from '../images/myAvatar.png'
+import HomeParticle from '../components/HomeParticle'
+
 
 const Home = () => {
     const classes = useStyles();
     return (
         
         <>
-            <Particles canvasClassName={classes.particlesJs}
-                params={{
-                    particles: {
-                        number: {
-                            value: 120,
-                            density: {
-                            enable: true,
-                            value_area: 1000
-                            }
-                        },
-                        shape: {
-                            type: "star",
-                        },
-                        color: {
-                            value: '#FFF'
-                        },
-                        opacity: {
-                            value: 0.6,
-                            anim: {
-                                enable: true
-                            }
-                        },
-                        size: {
-                            value: 6,
-                            random: true,
-                            anim: {
-                                enable: true,
-                                speed: 5
-                            }
-                        },
-                        line_linked: {
-                            enable: true
-                        },
-                        move: {
-                            speed: 0.2
-                        }
-                    }
-                }} 
-            />
+            <HomeParticle />
             <Grid container className={classes.gridContainer} direction="column" justify="center" alignItems="center"> 
                 <Grid item>
                     <Avatar alt="Vaibhav Sharma" src={avatar} classes={{root: classes.root }} />
