@@ -21,9 +21,6 @@ const useStyles = makeStyles((theme) => ({
         height: "100vh",
         background: 'linear-gradient(45deg, #158ADE, #F1DE39)',
     },
-    particlesJs: {
-        position: "absolute",
-    },
     root: {
         '&&': {
             width: "128px",
