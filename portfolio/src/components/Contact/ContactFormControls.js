@@ -6,7 +6,9 @@ const PostContactForm = async (
 ) => {
   const url = 'api/create/'
   const response = await serverInstance.post(url, values).then(res => {
-    return true
+    if (res.status === 201){
+      return true
+    }
   }).catch(err => {
     return err
   })
@@ -62,7 +64,7 @@ export const useFormControls = () => {
     validate({ [name]: value });
   };
 
-  const handleSuccess = (e) => {
+  const handleSuccess = () => {
     console.log("Success Call")
     setValues({
       ...initialFormValues,
@@ -70,7 +72,6 @@ export const useFormControls = () => {
       success: true
     });
     setShowAlert(true);
-    e.target.reset();
   };
 
   const handleError = () => {
@@ -98,6 +99,7 @@ export const useFormControls = () => {
     if (isValid) {
       await PostContactForm(values, handleSuccess, handleError);
     }
+    e.target.reset();
   };
 
   return {

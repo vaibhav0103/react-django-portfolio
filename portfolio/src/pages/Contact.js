@@ -39,7 +39,7 @@ const Contact = () => {
                             variant="outlined"
                             margin="normal"
                             required
-                            autoFocus
+                            // autoFocus
                             key={index}
                             onChange={handleInputValue}
                             onBlur={handleInputValue}
