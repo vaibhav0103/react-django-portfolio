@@ -1,5 +1,5 @@
 from django.shortcuts import render
-import datetime
+from datetime import datetime, timezone
 from rest_framework.generics import CreateAPIView
 from rest_framework.views import APIView
 from rest_framework.response import Response
@@ -24,7 +24,12 @@ class FootballApiView(APIView):
             if lastid:
                 matchData = Football.objects.filter(id=lastid)
                 isData = matchData.exists()
-                if isData:
+                '''
+                    check date time in db is greater than current date time
+                '''
+                # diff = matchData[0].matchdate - datetime.now(timezone.utc).astimezone(tz=timezone.utc)
+                
+                if isData and (matchData[0].matchdate > datetime.now(timezone.utc).astimezone(tz=timezone.utc)):
                     data = {
                         'data': FootballSerializer(matchData, many=True).data,
                         'message': isData
