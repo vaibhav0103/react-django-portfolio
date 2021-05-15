@@ -1,6 +1,7 @@
 import axios from 'axios';
 
-const baseURL= ' http://127.0.0.1:8000/';
+const baseURL= process.env.REACT_APP_SERVER_BASE_URL;
+console.log("Base", baseURL)
 // axios.defaults.withCredentials = true;
 
 const serverInstance = axios.create({
