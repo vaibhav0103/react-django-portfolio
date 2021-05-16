@@ -65,7 +65,6 @@ export const useFormControls = () => {
   };
 
   const handleSuccess = () => {
-    console.log("Success Call")
     setValues({
       ...initialFormValues,
       formSubmitted: true,
