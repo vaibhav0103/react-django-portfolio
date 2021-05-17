@@ -40,7 +40,7 @@ class FootballApiView(APIView):
             isData= False
             print("Not Exist")
 
-        return Response(data = {"message": isData}, status=status.HTTP_200_OK)
+        return Response(data = {"message": False}, status=status.HTTP_200_OK)
 
 # Create
 class CreateFootballApiView(APIView):
